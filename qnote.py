@@ -72,6 +72,7 @@ class qNote:
         path = os.path.dirname(os.path.abspath(__file__))
         self.dock = uic.loadUi(os.path.join(path, "ui_qnote.ui"))
         self.iface.addDockWidget(Qt.BottomDockWidgetArea, self.dock)
+        self.loadData()
         
 
     def unload(self):

@@ -16,7 +16,11 @@
   <widget class="QWidget" name="dockWidgetContents">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QTextEdit" name="edit"/>
+     <widget class="QTextEdit" name="edit">
+      <property name="lineWrapMode">
+       <enum>QTextEdit::NoWrap</enum>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>

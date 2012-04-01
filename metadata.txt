@@ -24,9 +24,9 @@ version=0.1
 # tags are comma separated with spaces allowed
 tags=
 
-homepage=
-tracker=
-repository=
+homepage=http://www.gis-support.pl/qnote-notatki-w-qgis/
+tracker=https://github.com/p0cisk/qNote/issues
+repository=https://github.com/p0cisk/qNote
 icon=icon.png
 # experimental flag
 experimental=True

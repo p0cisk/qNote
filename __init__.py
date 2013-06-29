@@ -25,11 +25,13 @@ def name():
 def description():
     return "Save notes in QGIS projects"
 def version():
-    return "Version 0.1"
+    return "Version 1.0"
 def icon():
     return "icon.png"
 def qgisMinimumVersion():
     return "1.0"
+def qgisMaximumVersion():
+    return "2.99"
 def classFactory(iface):
     # load qNote class from file qNote
     from qnote import qNote

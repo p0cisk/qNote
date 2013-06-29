@@ -11,15 +11,21 @@
 [general]
 name=qNote
 qgisMinimumVersion=1.0
+qgisMaximumVersion=2.99
 description=Save notes in QGIS projects
-version=0.1
+version=1.0
 
 # end of mandatory metadata
 
 # Optional items:
 
 # Uncomment the following line and add your changelog entries:
-# changelog=
+changelog=1.0
+    - qNote is not marked as experimental from now
+    - set qgisMaximumVersion to allow downloading in QGIS 2.0
+
+    0.1
+    - first release
 
 # tags are comma separated with spaces allowed
 tags=
@@ -29,11 +35,11 @@ tracker=https://github.com/p0cisk/qNote/issues
 repository=https://github.com/p0cisk/qNote
 icon=icon.png
 # experimental flag
-experimental=True
+experimental=False
 
 # deprecated flag (applies to the whole plugin, not just a single version
 deprecated=False
 
 # Author contact information
-author=Piotr Pociask
-email=opengis84 (at) gmail (dot) com
+author=GIS Support, Piotr Pociask
+email=piotr.pociask@gis-support.pl

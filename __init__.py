@@ -22,6 +22,10 @@
 """
 def name():
     return "qNote"
+def author():
+    return "GIS Support, Piotr Pociask"
+def email():
+    return "piotr.pociask@gis-support.pl"
 def description():
     return "Save notes in QGIS projects"
 def version():

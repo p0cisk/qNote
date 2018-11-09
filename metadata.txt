@@ -10,17 +10,20 @@
 
 [general]
 name=qNote
-qgisMinimumVersion=1.0
-qgisMaximumVersion=2.99
+qgisMinimumVersion=3.0
+qgisMaximumVersion=3.99
 description=Save notes in QGIS projects
-version=1.0
+version=2.0
 
 # end of mandatory metadata
 
 # Optional items:
 
 # Uncomment the following line and add your changelog entries:
-changelog=1.0
+changelog=2.0
+    - port to QGIS 3
+
+    1.0
     - qNote is not marked as experimental from now
     - set qgisMaximumVersion to allow downloading in QGIS 2.0
 

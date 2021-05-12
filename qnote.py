@@ -37,10 +37,11 @@ class qNote(object):
         proj = QgsProject.instance()
         proj.readProject.connect(self.loadData)
         proj.writeProject.connect(self.saveData)
-        self.iface.newProjectCreated .connect(self.clearEdit)
+        self.iface.newProjectCreated.connect(self.clearEdit)
         
         pluginPath = path.dirname(path.abspath(__file__))
         self.dock = uic.loadUi(path.join(pluginPath, "ui_qnote.ui"))
+        self.dock.add_hyperlink_btn.clicked.connect(self.addHyperlink)
         self.iface.addDockWidget(Qt.BottomDockWidgetArea, self.dock)
         self.loadData()
 
@@ -53,7 +54,7 @@ class qNote(object):
             
     def saveData(self):
         proj = QgsProject.instance()
-        text = self.dock.edit.toPlainText()
+        text = self.dock.edit.toHtml()
         if text:
             proj.writeEntry('qnote', 'data', text)
         else:
@@ -62,7 +63,11 @@ class qNote(object):
     def loadData(self):
         proj = QgsProject.instance()
         text = proj.readEntry('qnote', 'data', '')[0]
-        self.dock.edit.setText( text )
+        self.dock.edit.setHtml( text )
     
     def clearEdit(self):
-        self.dock.edit.setText('')
+        self.dock.edit.setHtml('')
+    
+    def addHyperlink(self):
+        self.dock.edit.showAddHyperLinkUi(self.dock.edit.textCursor())
+

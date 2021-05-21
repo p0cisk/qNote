@@ -1,6 +1,6 @@
 import sys
 from PyQt5.QtWidgets import QTextEdit, QMenu, QDialog
-from PyQt5.Qt import QDesktopServices, QUrl, QApplication, Qt
+from PyQt5.Qt import QDesktopServices, QUrl, QApplication, Qt, QBrush, QTextCharFormat
 from qgis.PyQt import uic
 from os import path
 
@@ -41,3 +41,6 @@ class QTextEditEnhanced(QTextEdit):
             linkAddress = window.textInput_url.text()
             cursor.insertHtml(
                 '<a href="%s">%s</a>' % (linkAddress, linkName))
+            charFormat = QTextCharFormat()
+            charFormat.setForeground(QBrush())
+            cursor.insertText(" ", charFormat)

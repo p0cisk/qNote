@@ -16,7 +16,24 @@
   <widget class="QWidget" name="dockWidgetContents">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QTextEdit" name="edit">
+     <widget class="QToolButton" name="add_hyperlink_btn">
+      <property name="styleSheet">
+       <string notr="true">border:none;background-color:None</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>link_image.jpg</normaloff>link_image.jpg</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>12</width>
+        <height>12</height>
+       </size>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QTextEditEnhanced" name="edit">
       <property name="lineWrapMode">
        <enum>QTextEdit::NoWrap</enum>
       </property>
@@ -25,6 +42,13 @@
    </layout>
   </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QTextEditEnhanced</class>
+   <extends>QTextEdit</extends>
+   <header>qNote.QTextEditEnhanced.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

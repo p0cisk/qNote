@@ -23,10 +23,12 @@
 # Import the PyQt and QGIS libraries
 
 from builtins import object
-from qgis.PyQt.QtCore import QFileInfo, QSettings, QCoreApplication, QObject, Qt
-from qgis.core import QgsApplication, QgsProject
+from qgis.PyQt.QtCore import Qt
+from qgis.core import QgsProject
 from qgis.PyQt import uic
 from os import path
+
+from .qnote_panel import MainPanel
 
 class qNote(object):
 
@@ -39,14 +41,16 @@ class qNote(object):
         proj.readProject.connect(self.loadData)
         proj.writeProject.connect(self.saveData)
         self.iface.newProjectCreated.connect(self.clearEdit)
-        pluginPath = path.dirname(path.abspath(__file__))
-        self.dock = uic.loadUi(path.join(pluginPath, "ui_qnote.ui"))
-        self.dock.add_hyperlink_btn.clicked.connect(self.addHyperlink)
+        
+        self.dock = MainPanel()
         self.iface.addDockWidget(Qt.BottomDockWidgetArea, self.dock)
+        
         self.loadData()
 
     def unload(self):
+        print( 'unload' )
         self.iface.removeDockWidget(self.dock)
+        del self.dock
 
     def run(self):
         self.iface.addDockWidget(Qt.BottomDockWidgetArea, self.dock)
@@ -67,6 +71,3 @@ class qNote(object):
     
     def clearEdit(self):
         self.dock.edit.setHtml('')
-    
-    def addHyperlink(self):
-        self.dock.edit.showAddHyperLinkUi(self.dock.edit.textCursor())

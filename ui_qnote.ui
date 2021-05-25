@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>634</width>
-    <height>167</height>
+    <height>178</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,19 +16,15 @@
   <widget class="QWidget" name="dockWidgetContents">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QToolButton" name="add_hyperlink_btn">
-      <property name="styleSheet">
-       <string notr="true">border:none;background-color:None</string>
-      </property>
-      <property name="icon">
-       <iconset>
-        <normaloff>link_image.jpg</normaloff>link_image.jpg</iconset>
-      </property>
+     <widget class="QToolBar" name="toolbar">
       <property name="iconSize">
        <size>
-        <width>12</width>
-        <height>12</height>
+        <width>16</width>
+        <height>16</height>
        </size>
+      </property>
+      <property name="floatable">
+       <bool>false</bool>
       </property>
      </widget>
     </item>

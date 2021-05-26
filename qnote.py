@@ -66,7 +66,7 @@ class qNote(object):
 
     def loadData(self):
         proj = QgsProject.instance()
-        text = proj.readEntry('qnote', 'data', '')[0]
+        text, has_note = proj.readEntry('qnote', 'data', '')
         is_html = proj.readEntry('qnote', 'is_html', "false")[0]
         if is_html == "true":
             self.dock.edit.setHtml( text )
@@ -74,6 +74,8 @@ class qNote(object):
             self.dock.edit.setText( text )
         self.dock.undo.setEnabled( False )
         self.dock.redo.setEnabled( False )
+        if has_note:
+            self.dock.show()
     
     def clearEdit(self):
         self.dock.edit.setHtml('')

@@ -68,6 +68,8 @@ class qNote(object):
         proj = QgsProject.instance()
         text = proj.readEntry('qnote', 'data', '')[0]
         self.dock.edit.setHtml( text )
+        self.dock.undo.setEnabled( False )
+        self.dock.redo.setEnabled( False )
     
     def clearEdit(self):
         self.dock.edit.setHtml('')

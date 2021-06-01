@@ -44,8 +44,7 @@ class QTextEditEnhanced(QTextEdit):
             addHyperLinkAction = menu.addAction("Add Hyperlink")
             action = menu.exec_(self.mapToGlobal(e.pos()))
             if action == addHyperLinkAction:
-                cursor = self.cursorForPosition(e.pos())
-                self.showAddHyperLinkUi(cursor)
+                self.showAddHyperLinkUi()
         super().mousePressEvent(e)
 
     def mouseReleaseEvent(self, e):
@@ -54,12 +53,13 @@ class QTextEditEnhanced(QTextEdit):
             QDesktopServices.openUrl(url)
         super().mouseReleaseEvent(e)
 
-    def showAddHyperLinkUi(self, cursor):
+    def showAddHyperLinkUi(self):
         self.link_window.eText.setText(self.textCursor().selectedText())
         self.link_window.eLink.clear()
         if self.link_window.exec_() == QDialog.Accepted:
             linkName = self.link_window.eText.text()
             linkAddress = self.link_window.eLink.text()
+            cursor = self.textCursor()
             cursor.insertHtml(
                 '<a href="%s">%s</a>' % (linkAddress, linkName))
             charFormat = QTextCharFormat()

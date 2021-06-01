@@ -13,7 +13,7 @@ class QTextEditEnhanced(QTextEdit):
         QTextEdit.__init__(self, parent)
         self.setMouseTracking(True)
         pluginPath = path.dirname(path.abspath(__file__))
-        self.link_window = uic.loadUi(path.join(pluginPath, "ui_hyperlink.ui"))
+        self.link_window = uic.loadUi(path.join(pluginPath, "ui/ui_hyperlink.ui"))
 
     def event(self, e):
         if e.type() == QEvent.ToolTip:

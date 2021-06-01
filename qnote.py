@@ -48,7 +48,6 @@ class qNote(object):
         self.loadData()
 
     def unload(self):
-        print( 'unload' )
         self.iface.removeDockWidget(self.dock)
         del self.dock
 
@@ -58,16 +57,25 @@ class qNote(object):
 
     def saveData(self):
         proj = QgsProject.instance()
-        text = self.dock.edit.toHtml()
-        if text:
-            proj.writeEntry('qnote', 'data', text)
+        if self.dock.edit.toPlainText():
+            proj.writeEntry('qnote', 'data', self.dock.edit.toHtml())
+            proj.writeEntryBool('qnote', 'is_html', True)
         else:
             proj.removeEntry('qnote', 'data')
+            proj.removeEntry('qnote', 'is_html')
 
     def loadData(self):
         proj = QgsProject.instance()
-        text = proj.readEntry('qnote', 'data', '')[0]
-        self.dock.edit.setHtml( text )
+        text, has_note = proj.readEntry('qnote', 'data', '')
+        is_html = proj.readEntry('qnote', 'is_html', "false")[0]
+        if is_html == "true":
+            self.dock.edit.setHtml( text )
+        else:
+            self.dock.edit.setText( text )
+        self.dock.undo.setEnabled( False )
+        self.dock.redo.setEnabled( False )
+        if has_note:
+            self.dock.show()
     
     def clearEdit(self):
         self.dock.edit.setHtml('')

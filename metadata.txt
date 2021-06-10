@@ -13,7 +13,7 @@ name=qNote
 qgisMinimumVersion=3.0
 qgisMaximumVersion=3.99
 description=Save notes in QGIS projects
-version=2.0
+version=2.1
 about=qNote is plugin for saving text notes in QGIS project files, basic HTML-formatting and hyperlinks are supported
 
 # end of mandatory metadata

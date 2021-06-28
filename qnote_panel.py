@@ -61,8 +61,8 @@ class MainPanel(QDockWidget, FORM_CLASS):
         self.edit.redoAvailable.connect( self.redo.setEnabled )
     
     def addHyperlink(self):
-        self.edit.showAddHyperLinkUi(self.edit.textCursor())
-
+        self.edit.showAddHyperLinkUi()
+    
     def setBold(self):
         if self.edit.fontWeight() == QFont.Bold:
             self.edit.setFontWeight(QFont.Normal)

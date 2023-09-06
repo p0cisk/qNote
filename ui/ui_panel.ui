@@ -33,6 +33,9 @@
       <property name="lineWrapMode">
        <enum>QTextEdit::NoWrap</enum>
       </property>
+      <property name="textInteractionFlags">
+       <set>Qt::LinksAccessibleByMouse|Qt::TextEditable|Qt::TextEditorInteraction|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
+      </property>
      </widget>
     </item>
    </layout>

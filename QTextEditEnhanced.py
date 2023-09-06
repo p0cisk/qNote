@@ -34,8 +34,12 @@ class QTextEditEnhanced(QTextEdit):
         if self.anchorAt(e.pos()):
             QApplication.setOverrideCursor(Qt.PointingHandCursor)
         else:
-            QApplication.setOverrideCursor(Qt.ArrowCursor)
+            self.restoreDefaultCursor()
         super().mouseMoveEvent(e)
+    
+    def leaveEvent(self, e):
+        super().leaveEvent(e)
+        self.restoreDefaultCursor()
 
     def mousePressEvent(self, e):
         if e.button() == Qt.RightButton:
@@ -52,6 +56,10 @@ class QTextEditEnhanced(QTextEdit):
             url = QUrl.fromLocalFile(self.anchorAt(e.pos()))
             QDesktopServices.openUrl(url)
         super().mouseReleaseEvent(e)
+    
+    def restoreDefaultCursor(self):
+        while QApplication.overrideCursor() is not None:
+            QApplication.restoreOverrideCursor()
 
     def showAddHyperLinkUi(self):
         self.link_window.eText.setText(self.textCursor().selectedText())
